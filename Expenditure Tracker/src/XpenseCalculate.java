@@ -21,7 +21,7 @@ public class XpenseCalculate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//TODO: here u need to check first if checkbox is for weekly monthly or yearly and add to respective database each time usser enters it
-		// then calculate total cost in resp db and when user presses submit print the total expense nd add link to to index page
+		//  when user presses submit go to display page and display all the report nd add link to index page
 	}
 
 
