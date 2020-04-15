@@ -13,6 +13,7 @@
 		<h2>Your Daily Expenditure</h3>
 		
 	    <form id="output_form" action="DailyXpenseCalculate">
+	     <span name="date" id="date"></span>
 	        <table id="table">
 	            <thead>
 	                <th>The Items you enter appear here</th>
@@ -24,6 +25,8 @@
 	            Total Price:<span id="total">0</span>
 	            <br>
 	            <br>
+	            <h4>Please Press Submit After Calculating Daily Expense Of Each Day</h4>
+	            
 	            <button type="submit">Submit</button>
 	        </div> 
 	    </form>
@@ -33,12 +36,15 @@
 	        
 	        <hr>
 	        <br>
+	        
+	        <input type="date" id="currentDate" placeholder="mm/dd/yyyy" onchange="resetAll()">
+    	    <br> <br>	
 	
-	        <input type="text" name="item" id="itemName" placeholder="Item Name"> 
+	        <input type="text" id="itemName" placeholder="Item Name"> 
 	
 	        <br> <br> 
 	
-	        <input type="number" name="price" id="cost" placeholder="Price">
+	        <input type="number" id="cost" placeholder="Price">
 	        <br> <br>
 	
 	        <button type="submit" onclick="add()">Add</button>
@@ -60,21 +66,39 @@
     function handleForm2(event) { event.preventDefault(); } 
     form2.addEventListener('submit', handleForm2);
 
+    var infoTable =document.getElementById("table");
+    
     function add() {
       
-        var tr=document.createElement("tr")
-        var name=document.getElementById("itemName").value
-        var cost=Number(document.getElementById("cost").value)
-        tr.name=name;
-        
-        tr.innerHTML="Item Name:"+name+"&#8287 Price: "+cost+" "+'&#8287 <i class="fa fa-edit "></i>'+" "+'&#8287<i class="fa fa-trash" ></i>'
+    	 var itemName=document.getElementById("itemName")
+         var name=itemName.value
 
-        var totalCost= Number(document.getElementById("total").innerHTML)+cost;
-        document.getElementById("table").appendChild(tr)
-        document.getElementById("total").innerHTML=totalCost;
+         var itemCost=document.getElementById("cost")
+         var cost=Number(itemCost.value)        
+       
+         var currDate = new Date(document.getElementById("currentDate").value);
+         document.getElementById("date").innerHTML=currDate.getDate()+" /"+(currDate.getMonth()+1)+" /"+currDate.getFullYear()
 
-        document.getElementById("input_form").reset();
+         var tr=document.createElement("tr")
+         tr.name="ItemName";
+         tr.innerHTML="Item Name:"+name+"&#8287 Price: "+cost+" "+'&#8287 <i class="fa fa-edit "></i>'+" "+'&#8287<i class="fa fa-trash" ></i>'
+
+         var totalCost= Number(document.getElementById("total").innerHTML)+cost;
+
+         document.getElementById("table").appendChild(tr)
+         document.getElementById("total").innerHTML=totalCost;
+
+         itemName.value=itemName.defaultValue
+         itemCost.value=itemCost.defaultValue
+
+         // document.getElementById("input_form").reset();
     }
+    
+    function resetAll() {
+        infoTable.innerHTML=""
+        infoTable.style.border="none"
+    }
+
 
 </script>
 			
