@@ -5,6 +5,47 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form action="XpenseCalculate" method="get">
 
+        <br>
+
+        <input type="text" name="itemName" placeholder="Item Name">
+        <br> <br>
+        
+        <input type="text" name="price" placeholder="Cost">
+        <br> <br>
+
+
+		<!-- Take the value of respective inputs and add that to the db along with name n price  -->
+        <label> Weekly </label> <input type="radio" name="choice" onclick="activateInput()" class="Day">
+        <input type="text" name="day" id="Day" style="display:none" placeholder="Enter a day ">
+        
+        <label> Monthly </label> <input type="radio" name="choice" onclick="activateInput()" class="Month"> 
+        <input type="text" name="month" id="Month" style="display:none" placeholder="Enter a month">
+
+        <label> Yearly </label> <input type="radio" name="choice" onclick="activateInput()" class="Year"> 
+        <input type="text" name="year" id="Year" style="display:none" placeholder="Enter a year">
+
+        <button >Submit</button>
+    </form>
+	
 </body>
+
+<script>
+	      
+	function activateInput() {
+	    var r = document.querySelectorAll('input[type="radio"]');
+	
+	    for (var i = 0; i < r.length; i++){
+	       var clName=r[i].className
+	       console.log(clName)
+	       if(r[i].checked) {
+	           document.getElementById(clName).style.display="block"
+	       } else {
+	        document.getElementById(clName).style.display="none"
+	       }
+	    }
+	}
+</script>
+
 </html>

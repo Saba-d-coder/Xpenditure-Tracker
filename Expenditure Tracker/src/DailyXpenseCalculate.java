@@ -22,7 +22,6 @@ public class DailyXpenseCalculate extends HttpServlet {
 	Connection conn = null;
 
 	public DailyXpenseCalculate() {
-
 		super();
 	}
 
