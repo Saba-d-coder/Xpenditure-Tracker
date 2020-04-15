@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Expenditure Check</title>	
+	    <link rel="stylesheet" href="css/dailyXpenseForm.css">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/fontawesome.min.css">
+	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	</head>
+	
+	<body>
+		
+		<h2>Your Daily Expenditure</h3>
+		
+	    <form id="output_form" action="DailyXpenseCalculate">
+	        <table id="table">
+	            <thead>
+	                <th>The Items you enter appear here</th>
+	            </thead>
+	        </table>
+	
+	        <br>
+	        <div id="totalAmt">
+	            Total Price:<span id="total">0</span>
+	            <br>
+	            <br>
+	            <button type="submit">Submit</button>
+	        </div> 
+	    </form>
+	
+	    <form id="input_form" >
+	        <h2>Enter Item Details </h6>
+	        
+	        <hr>
+	        <br>
+	
+	        <input type="text" name="item" id="itemName" placeholder="Item Name"> 
+	
+	        <br> <br> 
+	
+	        <input type="number" name="price" id="cost" placeholder="Price">
+	        <br> <br>
+	
+	        <button type="submit" onclick="add()">Add</button>
+	
+	        <br>
+	        <br>
+	    </form>
+	    
+
+</body>
+
+<script>
+
+    var form = document.getElementById("output_form");
+    function handleForm(event) { event.preventDefault(); } 
+    form.addEventListener('submit', handleForm);
+
+    var form2 = document.getElementById("input_form");
+    function handleForm2(event) { event.preventDefault(); } 
+    form2.addEventListener('submit', handleForm2);
+
+    function add() {
+      
+        var tr=document.createElement("tr")
+        var name=document.getElementById("itemName").value
+        var cost=Number(document.getElementById("cost").value)
+        tr.name=name;
+        
+        tr.innerHTML="Item Name:"+name+"&#8287 Price: "+cost+" "+'&#8287 <i class="fa fa-edit "></i>'+" "+'&#8287<i class="fa fa-trash" ></i>'
+
+        var totalCost= Number(document.getElementById("total").innerHTML)+cost;
+        document.getElementById("table").appendChild(tr)
+        document.getElementById("total").innerHTML=totalCost;
+
+        document.getElementById("input_form").reset();
+    }
+
+</script>
+			
+
+</html>

@@ -1,0 +1,46 @@
+@charset "ISO-8859-1";
+
+
+body {
+    text-align: center;
+}
+
+table,li {
+    border: 1.5px solid black;
+    border-radius: 4px;
+    width: 30%;
+    list-style: none;
+    margin:auto 35%;
+
+
+}
+
+#input_form {
+    width: 30%;
+    margin: 5% 35%;
+    border: 1.5px solid black;
+    border-radius: 10px;
+    background-color: white;
+    
+}
+
+
+hr {
+    border: 0.5px solid black 
+}
+
+.fas {
+    color: cyan;
+    font-size: 20px;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color:inherit;
+    width: 70%;
+}
+
+input:focus {
+    outline: none;
+}
