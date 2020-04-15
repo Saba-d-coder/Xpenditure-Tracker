@@ -12,6 +12,11 @@
 		
 		<h2>Your Daily Expenditure</h3>
 		
+		<!-- Use this form's values only to enter into the database
+		dont store the total cost in database we will calculate it if user want to see while retrieving
+		i have added name="ItemName"(check that in js code below) for every rows of the table so that u can get all the rows at a time 
+		only store the values when user presses submit at the end  not when user keeps adding values to table  -->
+		
 	    <form id="output_form" action="DailyXpenseCalculate">
 	     <span name="date" id="date"></span>
 	        <table id="table">
@@ -70,6 +75,8 @@
     
     function add() {
       
+    	 infoTable.style.border="1.5px solid black"
+    	 
     	 var itemName=document.getElementById("itemName")
          var name=itemName.value
 
@@ -80,7 +87,9 @@
          document.getElementById("date").innerHTML=currDate.getDate()+" /"+(currDate.getMonth()+1)+" /"+currDate.getFullYear()
 
          var tr=document.createElement("tr")
+         //added name to all rows 
          tr.name="ItemName";
+         
          tr.innerHTML="Item Name:"+name+"&#8287 Price: "+cost+" "+'&#8287 <i class="fa fa-edit "></i>'+" "+'&#8287<i class="fa fa-trash" ></i>'
 
          var totalCost= Number(document.getElementById("total").innerHTML)+cost;
@@ -91,7 +100,6 @@
          itemName.value=itemName.defaultValue
          itemCost.value=itemCost.defaultValue
 
-         // document.getElementById("input_form").reset();
     }
     
     function resetAll() {
