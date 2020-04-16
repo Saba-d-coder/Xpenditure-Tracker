@@ -1,46 +1,112 @@
 @charset "ISO-8859-1";
 
-
 body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333;
     text-align: center;
+  }
+  
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: crimson
 }
 
-table,li {
-    border: 1.5px solid black;
-    border-radius: 4px;
-    width: 30%;
-    list-style: none;
-    margin:auto 35%;
+#mainDiv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
+table {
+    line-height: 40px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px solid #ed1c40;
+    width: 500px;
+    margin:auto;
+    border-radius: .25rem;
+    font-family: cursive;
+    font-size: 20px;
+  }
+  
+  thead {
+    background: #ed1c40;
+    color: #fff;
+    border: none;
+  }
 
+  th {
+    font-weight: 500;
+  }
+
+ tbody > tr:hover {
+    background-color: #d4d1d1;
+    border:2px solid #ed1c40 !important; 
+    border-top: none;
+    border-bottom: none;
+    cursor: default;
+    width: 100%;
+    border-radius: .25rem;
+  }
+
+  .fa {
+    color: rgb(19, 19, 19);
+    cursor: pointer;
+  }
+  
+  .fa-edit:hover {
+    color: #0a79df;
+  }
+  
+  .fa-trash:hover {
+    color: red;
+  }
+
+#totalAmt {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 19px;
+}
+
+#total, label {
+    color: crimson;
 }
 
 #input_form {
     width: 30%;
-    margin: 5% 35%;
     border: 1.5px solid black;
     border-radius: 10px;
-    background-color: white;
+    color: crimson;
     
 }
-
 
 hr {
     border: 0.5px solid black 
 }
 
-.fas {
-    color: cyan;
-    font-size: 20px;
-}
-
 input {
     border: none;
     border-bottom: 1px solid black;
-    background-color:inherit;
-    width: 70%;
+    width: 50%;
+    font-size: 18px;
+    line-height: 30px;
+    color: crimson;
 }
 
 input:focus {
     outline: none;
+}
+
+button {
+    color: white;
+    background-color: #ed1c40;
+    font-size: 17px ;
+    height: 35px;
+    width: 80px;
+    border: none;
+    border-radius: 29px;
+}
+
+button:hover {
+    outline:none;
+    background-color: rgb(235, 128, 128);
 }

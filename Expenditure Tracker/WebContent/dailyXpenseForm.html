@@ -8,106 +8,112 @@
 	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	</head>
 	
-	<body>
-		
-		<h2>Your Daily Expenditure</h3>
+	 <h1>Your Daily Expenditure</h1>
+        <hr style="margin-bottom: 20px;">
 		
 		<!-- Use this form's values only to enter into the database
 		dont store the total cost in database we will calculate it if user want to see while retrieving
 		i have added name="ItemName"(check that in js code below) for every rows of the table so that u can get all the rows at a time 
 		only store the values when user presses submit at the end  not when user keeps adding values to table  -->
-		
-	    <form id="output_form" action="DailyXpenseCalculate">
-	     <span name="date" id="date"></span>
-	        <table >
-	            <thead>
-	                <th id="tabHead">The Items you enter appear here</th>
-                </thead>
-                <tbody id="tabBody">
+        
+        <div id="mainDiv">
+            <form id="output_form" action="DailyXpenseCalculate">
+                <h3 name="date" id="date"></h3>
+                <table >
+                    <thead>
+                        <th colspan="6" id="tabHead">The items you enter appear here</th>
+                    </thead>
+                    <tbody id="tabBody">
+    
+                    </tbody>
+                </table>
+        
+                <br>
+                <div id="totalAmt">
+                    <label>Total Price: $</label><span id="total"> 0 </span>
+                    <br>
+                    <br>
+                    <p>Please Press Submit After Calculating Daily Expense Of Each Day</p>
+                    
+                    <button type="submit">Submit</button>
+                </div> 
+           </form>
 
-                </tbody>
-	        </table>
+           <form id="input_form" >
+                <h2>Enter Item Details </h6>
+                
+                <hr>
+                <br>
+                
+                <input type="date" id="currentDate" placeholder="mm/dd/yyyy" onchange="resetAll()" required>
+                <br> <br>	
+        
+                <input type="text" id="itemName" placeholder="Item Name" required> 
+        
+                <br> <br> 
+        
+                <input type="number" id="cost" placeholder="Price" required>
+                <br> <br>
+        
+                <button type="submit" id="iBtn" onclick="add()">Add</button>
+        
+                <br>
+                <br>
+            </form>
+        </div>
 	
-	        <br>
-	        <div id="totalAmt">
-	            Total Price:<span id="total">0</span>
-	            <br>
-	            <br>
-	            <h4>Please Press Submit After Calculating Daily Expense Of Each Day</h4>
-	            
-	            <button type="submit">Submit</button>
-	        </div> 
-	    </form>
-	
-	    <form id="input_form" >
-	        <h2>Enter Item Details </h6>
-	        
-	        <hr>
-	        <br>
-	        
-	        <input type="date" id="currentDate" placeholder="mm/dd/yyyy" onchange="resetAll()">
-    	    <br> <br>	
-	
-	        <input type="text" id="itemName" placeholder="Item Name"> 
-	
-	        <br> <br> 
-	
-	        <input type="number" id="cost" placeholder="Price">
-	        <br> <br>
-	
-	        <button type="submit" onclick="add()">Add</button>
-	
-	        <br>
-	        <br>
-	    </form>
-	    
 
 </body>
 
 <script>
-	var form2 = document.getElementById("input_form");
-	function handleForm2(event) { event.preventDefault(); } 
-	form2.addEventListener('submit', handleForm2);
-	
-	    var infoTable =document.getElementById("tabBody")
-	    var tableHead = document.getElementById("tabHead")
-	
-	function add() {
-	  
-		 infoTable.style.border="1.5px solid black"
-		 tableHead.style.borderBottom="1.5px solid black"
-	
-		 var itemName=document.getElementById("itemName")
-	     var name=itemName.value
-	
-	     var itemCost=document.getElementById("cost")
-	     var cost=Number(itemCost.value)        
-	   
-	     var currDate = new Date(document.getElementById("currentDate").value);
-	     document.getElementById("date").innerHTML=currDate.getDate()+" /"+(currDate.getMonth()+1)+" /"+currDate.getFullYear()
-	
-	     var tr=document.createElement("tr")
-	     //added name to all rows 
-	     tr.name="ItemName";
-	     
-	     tr.innerHTML="Item Name:"+name+"&#8287 Price: "+cost+" "+'&#8287 <i class="fa fa-edit "></i>'+" "+'&#8287<i class="fa fa-trash" ></i>'
-	
-	     var totalCost= Number(document.getElementById("total").innerHTML)+cost;
-	
-	     document.getElementById("tabBody").appendChild(tr)
-	     document.getElementById("total").innerHTML=totalCost;
-	
-	     itemName.value=itemName.defaultValue
-	     itemCost.value=itemCost.defaultValue
-	
-	}
-	
-	function resetAll() {
-	    infoTable.innerHTML=""
-	    infoTable.style.border="none"
-	    tableHead.style.border="none"
-	
-	}
+
+    var form2 = document.getElementById("input_form");
+    function handleForm2(event) { event.preventDefault(); } 
+    form2.addEventListener('submit', handleForm2);
+
+    var infoTable =document.getElementById("tabBody")
+    var amtTotal=document.getElementById("total")
+    var itemCost=document.getElementById("cost")
+    var itemName=document.getElementById("itemName")
+    
+    function add() {
+        var currDate = new Date(document.getElementById("currentDate").value);
+
+        if(itemName.value && Date.parse(currDate) && itemCost.value) {
+
+            var name=itemName.value
+
+            var cost=Number(itemCost.value)                 
+            
+            document.getElementById("date").innerHTML=currDate.getDate()+" /"+(currDate.getMonth()+1)+" /"+currDate.getFullYear()
+
+            var tr=document.createElement("tr")
+            //added name to all rows 
+            tr.name="ItemName";
+
+            tr.innerHTML='&#8287 &#8287'+name+" - $" +cost +'&#8287 &#8287 &#8287 &#8287<i class="fa fa-edit"> &#8287 </i> <i class="fa fa-trash"></i>'
+
+            var totalCost= Number(amtTotal.innerHTML)+cost;
+
+            document.getElementById("tabBody").appendChild(tr)
+            amtTotal.innerHTML=totalCost;
+
+            itemName.value=itemCost.defaultValue
+            itemName.textContent=""
+            itemCost.value=itemCost.defaultValue
+        }    
+    }
+    
+    function resetAll() {
+        infoTable.innerHTML=""
+        infoTable.style.border="none"
+        amtTotal.innerHTML=""
+        itemName.value=itemCost.defaultValue
+        itemCost.value=itemCost.defaultValue
+
+    }
+
+
 </script>
 			
 
