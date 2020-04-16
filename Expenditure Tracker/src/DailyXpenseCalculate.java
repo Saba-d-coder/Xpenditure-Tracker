@@ -12,10 +12,10 @@ public class DailyXpenseCalculate extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String databaseUrl = "jdbc:mysql://localhost:3306/myDB";
+	private String databaseUrl = "jdbc:mysql://localhost:3306/mydb";
 	private String driver = "com.mysql.jdbc.Driver"; 
 	private String userName = "root";
-	private String password = "whatever"; 
+	private String password = " "; 
 	  
 	
 	String naming = "";
