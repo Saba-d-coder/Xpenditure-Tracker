@@ -66,38 +66,34 @@
 </body>
 
 <script>
-
-	
 	var form2 = document.getElementById("input_form");
 	function handleForm2(event) { event.preventDefault(); } 
 	form2.addEventListener('submit', handleForm2);
 	
+	
 	var infoTable =document.getElementById("tabBody")
 	var amtTotal=document.getElementById("total")
-	var itemCost=document.getElementById("cost")
 	var itemName=document.getElementById("itemName")
-	var cnt=1;
+	var itemCost=document.getElementById("cost")
 	var totalCost
 	
 	function add() {
+	    
 	    var currDate = new Date(document.getElementById("currentDate").value);
-	
 	    if(itemName.value && Date.parse(currDate) && itemCost.value) {
 	
 	        var name=itemName.value
 	
 	        var cost=Number(itemCost.value)                 
 	        
-	        document.getElementById("date").innerHTML=currDate.getDate()+" /"+(currDate.getMonth()+1)+" /"+currDate.getFullYear()
+	        document.getElementById("date").innerHTML=currDate.getDate()+"-"+(currDate.getMonth()+1)+"-"+currDate.getFullYear()
 	
 	        var tr=document.createElement("tr")
-	        
 	        //added name to all rows 
-	        tr.setAttribute("name","ItemName");    
-	
-	        tr.innerHTML='&#8287 &#8287'+name+" - $" +'<span>'+cost+'</span>'+'&#8287 &#8287 &#8287 &#8287<i onclick="editRow(this)" class="fa fa-edit"> &#8287 </i> <i class="fa fa-trash" onclick="deleteRow(this.parentNode)" ></i>'
+	        tr.setAttribute("name","ItemName")      
 	        
-	    
+	
+	        tr.innerHTML='&#8287 &#8287<span>'+name+"</span> - $" +'<span>'+cost+'</span>'+'&#8287 &#8287 &#8287 &#8287<i onclick="editRow(this.parentNode)" class="fa fa-edit"> &#8287 </i> <i class="fa fa-trash" onclick="deleteRow(this.parentNode)" ></i>'	    
 	        totalCost= Number(amtTotal.innerHTML)+cost;
 	
 	        document.getElementById("tabBody").appendChild(tr)
@@ -106,30 +102,56 @@
 	        itemName.value=itemCost.defaultValue
 	        itemName.textContent=""
 	        itemCost.value=itemCost.defaultValue
-	    }  
+	     }    
 	}
-
+	
 	function resetAll() {
 	    infoTable.innerHTML=""
 	    infoTable.style.border="none"
 	    amtTotal.innerHTML=""
 	    itemName.value=itemCost.defaultValue
 	    itemCost.value=itemCost.defaultValue
-	
+	    document.getElementById("date").innerHTML=""
 	}
-
-	function deleteRow(rid) {   
-
-
-	    var amt=Number(rid.childNodes[1].innerHTML)
-	    console.log(amt)
+	
+	function deleteRow(row) { 	
+		
+	    var amt=Number(row.childNodes[3].innerHTML)
+	    
 	    totalCost=totalCost-amt
 	    amtTotal.innerHTML=totalCost;
-	
-	  	document.getElementById("tabBody").removeChild(rid);
+	    
+	    document.getElementById("tabBody").removeChild(row);
 	}
-
-
+	
+	function editRow(row) {
+		
+	    var formDate = document.getElementById("currentDate")
+	    var amt=Number(row.childNodes[3].innerHTML)
+	    var date1=new Date(formDate.value)
+	    var item=row.childNodes[1].innerHTML
+	
+	    var mon=(date1.getMonth()+1)
+	    if(mon <10) {
+	        mon="0"+String(mon)
+	    } 
+	
+	    var dat =date1.getDate()
+	    if(dat < 10) {
+	        dat= "0" +String(dat)
+	    }
+	
+	    var newDate = date1.getFullYear()+"-"+mon+"-"+dat
+	    
+	    document.getElementById("tabBody").removeChild(row);
+	    
+	    totalCost=totalCost-amt
+	    amtTotal.innerHTML=totalCost;
+	    itemName.value=item
+	    itemCost.value=amt
+	    formDate.value=newDate
+	
+	}
 </script>
 			
 
