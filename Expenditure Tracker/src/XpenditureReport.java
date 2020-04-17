@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/PastXpenditure")
-public class PastXpenditure extends HttpServlet {
+@WebServlet("/XpenditureReport")
+public class XpenditureReport extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
   
-    public PastXpenditure() {
+    public XpenditureReport() {
         super();
         // TODO Auto-generated constructor stub
     }

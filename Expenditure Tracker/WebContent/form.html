@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Calculate Xpenditure</title>
+		<link rel="stylesheet" href="css/form.css">
+	</head>
 <body>
 	<form action="XpenseCalculate" method="get">
 
@@ -18,16 +19,20 @@
 
 		<!-- Take the value of respective inputs and add that to the db along with name n price  -->
         <label> Weekly </label> <input type="radio" name="choice" onclick="activateInput()" class="Day">
-        <input type="text" name="day" id="Day" style="display:none" placeholder="Enter a day ">
+        <input type="date" name="day" id="Day" style="display:none">
         
         <label> Monthly </label> <input type="radio" name="choice" onclick="activateInput()" class="Month"> 
-        <input type="text" name="month" id="Month" style="display:none" placeholder="Enter a month">
+        <input type="date" name="month" id="Month" style="display:none">
 
         <label> Yearly </label> <input type="radio" name="choice" onclick="activateInput()" class="Year"> 
         <input type="text" name="year" id="Year" style="display:none" placeholder="Enter a year">
 
         <button >Submit</button>
     </form>
+    
+    <a href="displayReport.jsp"><button>Check Report</button></a>
+    <a href="index.html"><button>Home Page</button></a>
+    
 	
 </body>
 
