@@ -1,1 +1,31 @@
 @charset "ISO-8859-1";
+
+body{
+	text-align:center;
+	color:crimson
+}
+
+.Container1{
+	display:flex;
+	justify-content:space-around;
+	/* align-items:center */
+}
+
+.Container2 {
+	display:flex;
+	justify-content:space-around;
+	margin-top:30%
+}
+
+#daily,#yearly,#monthly,#weekly{
+	width:50%;
+	margin:auto
+}
+
+#chart{
+	margin-top:4%;
+	height:370px;
+	width:50%;
+	display:flex;
+	justify-content:center
+}
