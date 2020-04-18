@@ -1,22 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Daily Xpenditure</title>
-		<link rel="stylesheet" href="css/dailyXpenseForm.css">
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/fontawesome.min.css">
-	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-	</head>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
 <body>
-	<h3>The items will be entered automatically once you press 'Add' </h3>
+	<h3><%=request.getAttribute("result") %></h3>
 	 <form action="DailyXpenseCalculate" method="get">
                 <h2>Enter Item Details </h2>
                 
                 <hr>
                 <br>
         
-                <input type="date" name="date" id="currentDate" placeholder="mm-dd-yyyy">
+                <input type="date" name="date" id="currentDate" placeholder="mm-dd-yyyy" value=<%=request.getAttribute("Date") %>>
                 <br> <br>	
         
                 <input type="text" name="itemName"  id="itemName" placeholder="Item Name"> 
@@ -27,9 +25,11 @@
                 <br> <br>
         
                 <button type="submit" name="iBtn" value="add" id="ad">Add</button>
-        		<button type="submit" name="iBtn" value="calci" id="calc">Check Total</button>
+        		<a href="index.html">Go Back to Home Page</a>
                 <br>
                 <br>
         </form>
+        
+        <h4>Total Amount:<%=request.getAttribute("totalAmt") %></h4>
 </body>
 </html>

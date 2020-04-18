@@ -44,7 +44,6 @@
 			dataPoints1 = gsonObj.toJson(list1);
 		}
 		
-		/* ResultSet resultSet2 = statement.executeQuery("select * from weekly_xpense  where date BETWEEN CAST('20000130' AS DATETIME) AND  CAST('20201201'AS DATETIME)"); */
 		ResultSet resultSet2 = statement.executeQuery("select * from weekly_xpense WHERE date >= DATE_SUB(curdate(), INTERVAL 5 week) group by week(date) order by date");
 		
 		while(resultSet2.next()){
@@ -65,10 +64,10 @@
 			dataPoints3 = gsonObj.toJson(list3); 
 		}
 		
-		ResultSet resultSet4 = statement.executeQuery("select * from yearly_xpense  WHERE year >'2015' and year<='2020' group by year order by year");
+		ResultSet resultSet4 = statement.executeQuery("select * from yearly_xpense WHERE date >= DATE_SUB(curdate(), INTERVAL 5 year) group by year(date) order by date");
 		
 		while(resultSet4.next()){
-			xVal = resultSet4.getString("year");
+			xVal = resultSet4.getString("date");
 			yVal = resultSet4.getDouble("price");
 			yearly = new HashMap<Object,Object>(); yearly.put("label", xVal); yearly.put("y", yVal); list4.add(yearly);
 			dataPoints4 = gsonObj.toJson(list4); 
@@ -78,7 +77,7 @@
 	}
 	catch(SQLException e){
 		out.println(e);
-		out.println("<div  style='width: 50%; margin-left: auto; margin-right: auto; margin-top: 100px;'>Could not connect to the database. Please check if you have mySQL Connector installed on the machine - if not, try installing the same.</div>");
+		out.println("<div  style='width: 50%; margin-left: auto; margin-right: auto; margin-top: 100px;'>Could not connect to the database. Please check if you have mySQL Connector installed on the machine - if not, try installing the same. or you may not have any data in the database to display</div>");
 		dataPoints1 = null;
 		dataPoints2 = null;
 		dataPoints3 = null;
@@ -119,10 +118,6 @@
 		<div id="yearly" ></div>
 	</div>
 	
-	
-	
-	
-
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 		
@@ -162,7 +157,6 @@
 					type: "column",
 					indexLabel: "{y}",
 					indexLabelPlacement: "inside",
-					legendText: "{label}: {y}",
 					toolTipContent: "<b>{label}</b>: {y}",
 					dataPoints : <%out.print(dataPoints2);%>
 				}]
@@ -185,7 +179,6 @@
 				type: "column",
 				indexLabel: "{y}",
 				indexLabelPlacement: "inside",
-				legendText: "{label}: {y}",
 				toolTipContent: "<b>{label}</b>: {y}",
 				dataPoints : <%out.print(dataPoints3);%>
 			}]
@@ -205,19 +198,16 @@
 			},
 			data: [{
 				type: "column",
-				showInLegend: true,
 				indexLabel: "{y}",
 				indexLabelPlacement: "inside",
-				legendText: "{label}: {y}",
 				toolTipContent: "<b>{label}</b>: {y}",
-				dataPoints : <%out.print(dataPoints4);%>
-			}]
+				dataPoints : <%out.print(dataPoints4);%>}]
 	
 		});
 		chart4.render();
 	<% } %> 
-}
-			
+	
+}	
 </script>
 	</body>
 </html>

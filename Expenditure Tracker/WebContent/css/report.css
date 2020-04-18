@@ -22,10 +22,3 @@ body{
 	margin:auto
 }
 
-#chart{
-	margin-top:4%;
-	height:370px;
-	width:50%;
-	display:flex;
-	justify-content:center
-}

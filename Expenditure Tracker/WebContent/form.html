@@ -4,6 +4,8 @@
 		<meta charset="ISO-8859-1">
 		<title>Calculate Xpenditure</title>
 		<link rel="stylesheet" href="css/form.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/fontawesome.min.css">
+	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	</head>
 <body>
 	<form action="XpenseCalculate" method="get">
@@ -16,16 +18,12 @@
         <input type="text" name="price" placeholder="Cost">
         <br> <br>
 
-
-		<!-- Take the value of respective inputs and add that to the db along with name n price  -->
-        <label> Weekly </label> <input type="radio" name="choice" onclick="activateInput()" class="Day" >
-        <input type="date" name="day" id="Day" style="display:none">
+		<input type="date" name="date">
+        <label> Weekly </label> <input type="radio" name="choice" value="Day" >
         
-        <label> Monthly </label> <input type="radio" name="choice" onclick="activateInput()" class="Month"> 
-        <input type="date" name="month" id="Month" style="display:none">
+        <label> Monthly </label> <input type="radio" name="choice"  value="Month"> 
 
-        <label> Yearly </label> <input type="radio" name="choice" onclick="activateInput()" class="Year"> 
-        <input type="text" name="year" id="Year" style="display:none" placeholder="Enter a year">
+        <label> </label> Yearly <input type="radio" name="choice" value="Year"> 
 
         <button >Submit</button>
     </form>
@@ -49,7 +47,7 @@
 	
 	    for (var i = 0; i < r.length; i++){
 	       var clName=r[i].className
-	       console.log(clName)
+
 	       if(r[i].checked) {
 	           document.getElementById(clName).style.display="block"
 	       } else {
