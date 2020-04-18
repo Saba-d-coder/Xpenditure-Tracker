@@ -55,8 +55,6 @@
 		
 		ResultSet resultSet3 = statement.executeQuery("select * from monthly_xpense WHERE date >= DATE_SUB(curdate(), INTERVAL 5 month) group by month(date) order by date");
 		
-		/* ResultSet resultSet3 = statement.executeQuery("select * from monthly_xpense where date BETWEEN CAST('20000130' AS DATETIME) AND  CAST('20201201'AS DATETIME)");
-		 */
 		while(resultSet3.next()){
 			xVal = resultSet3.getString("date");
 			yVal = resultSet3.getDouble("price");
