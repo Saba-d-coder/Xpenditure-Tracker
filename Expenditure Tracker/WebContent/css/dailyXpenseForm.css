@@ -11,22 +11,15 @@ h1 {
     color: crimson
 }
 
-#totalAmt {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 19px;
-     color: crimson;
-}
-
 form {
     width: 40%;
     border: 1.5px solid black;
     border-radius: 10px;
     color: crimson;
     text-align:center;
-    margin:5% auto;
+    margin:2% auto ;
     
 }
-
 
 input {
     border: none;
@@ -41,28 +34,21 @@ input:focus {
     outline: none;
 }
 
-#ad {
+#add,button {
     color: white;
-    background-color: #ed1c40;
-    font-size: 17px ;
+    background-color: #ed1c40 !important;
+    font-size: 17px !important ;
     height: 35px !important;
     width:13%;
     border: none;
     border-radius: 29px;
 }
 
-#calc{
-    color: white;
-    background-color: #ed1c40;
-    font-size: 17px ;
-    height: 35px !important;
-    width:18% !important;
-    border: none;
-    border-radius: 29px;
+button:hover {
+    outline:none !important;
+    background-color: rgb(235, 128, 128);
 }
 
-
-button:hover {
-    outline:none;
-    background-color: rgb(235, 128, 128);
+h4{
+	margin-top:0
 }
