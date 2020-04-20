@@ -1,8 +1,8 @@
 # Expenditure-Tracker
 
 Instructions for opening the project
-# Please run the peroject on the browser for css to work properly
-# Create the following tables in the database and your connection details wherever necessary in the code:
+# Please run the project on the browser for css to work properly
+# Create the following tables in the database and update the database connection details wherever necessary in the code:
 create table daily_xpense( id INT primary key AUTO_INCREMENT, itemname VarChar(20), price
 double, currDate Date);
 create table weekly_xpense( id INT primary key AUTO_INCREMENT, itemname VarChar(20), price
@@ -18,4 +18,4 @@ insert into monthlyXpense (itemname,price,currMonth) values (&quot;Electricity&q
 insert into weeklyXpense (itemname,price,currYear) values (&quot;Rent&quot;,&quot;40000&quot;,&quot;2020-01-03&quot;);
 # Please add at least 10 rows to the database
 # Download Google gson.jar file from the following link
-[a link] (https://jar-download.com/artifacts/com.google.code.gson/gson/2.8.2/source-code)
+https://jar-download.com/artifacts/com.google.code.gson/gson/2.8.2/source-code
