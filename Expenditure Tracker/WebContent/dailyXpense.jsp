@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Daily Xpenditure</title>
-		<link rel="stylesheet" href="css/dailyXpenseForm.css">
+		<link rel="stylesheet" type="text/css" href="css/dailyXpenseForm.css">
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/fontawesome.min.css">
 	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	</head>

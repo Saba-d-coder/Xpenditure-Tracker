@@ -89,7 +89,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Xpenditure Report</title>
-		<link rel="stylesheet" href="css/report.css">
+		<link rel="stylesheet" type="text/css" href="css/report.css">
 
 	</head>
 
@@ -103,17 +103,19 @@
 		Enter a date: <input type="date" name="Date" onchange=check()>
 		<button>Check</button>
 	</form>
+	<br>
+	<br>
 	
-	<div class="Container1">
-		<div id="daily" ></div>
+	<div class="Container1" >
+		<div id="daily" style="width:40%;"></div>
 		
-		<div id="weekly" ></div>
+		<div id="weekly" style="width:40%;" ></div>
 	</div>
 	
 	<div class="Container2">	
-		<div id="monthly" ></div>
+		<div id="monthly" style="width:40%;"></div>
 		
-		<div id="yearly" ></div>
+		<div id="yearly" style="width:40%;"></div>
 	</div>
 	
 
@@ -127,6 +129,8 @@
 	
 		var chart1 = new CanvasJS.Chart("daily", {
 			animationEnabled: true,
+			axisY:{title:"Total Xpenditure"},
+			axisX:{title:"Date"},
 			title:{
 				text: "Daily Expenditure of past 7 days"
 			},
@@ -147,7 +151,8 @@
 		<% if(dataPoints2 != null) { %>
 			var chart2 = new CanvasJS.Chart("weekly", {
 				animationEnabled: true,
-				exportEnabled: true,
+				axisY:{title:"Total Xpenditure"},
+				axisX:{title:"Date"},
 				title: {
 					text: "Weekly Expenditure of past 5 weeks"
 				},
@@ -169,7 +174,8 @@
 		<% if(dataPoints3 != null) { %>
 		var chart3 = new CanvasJS.Chart("monthly", {
 			animationEnabled: true,
-			exportEnabled: true,
+			axisY:{title:"Total Xpenditure"},
+			axisX:{title:"Date"},
 			title: {
 				text: "Monthly Expenditure of past 5 months"
 			},
@@ -190,7 +196,8 @@
 		
 		var chart4 = new CanvasJS.Chart("yearly", {
 			animationEnabled: true,
-			exportEnabled: true,
+			axisY:{title:"Total Xpenditure"},
+			axisX:{title:"Date"},
 			title: {
 				text: "Yearly Expenditure of past 5 years"
 			},

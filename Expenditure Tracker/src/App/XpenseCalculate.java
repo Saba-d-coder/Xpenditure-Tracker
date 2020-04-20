@@ -29,6 +29,7 @@ public class XpenseCalculate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
 		 
 		String Itemname = request.getParameter("itemName");
 		double Price = Double.parseDouble(request.getParameter("price"));
@@ -75,7 +76,7 @@ public class XpenseCalculate extends HttpServlet {
 				     st.executeUpdate();
 				     st.close();
 				     
-		     } else {
+		     } else if(Choice.equals("Day")){
 		        String day = request.getParameter("date");
 		        PreparedStatement pst1 = con.prepareStatement("select max(id)+1 from weekly_xpense");
 		             ResultSet rs = pst1.executeQuery();
@@ -92,10 +93,14 @@ public class XpenseCalculate extends HttpServlet {
 		         st.executeUpdate();
 		         st.close();
 
-		     }    
+		     } else {
+		    	 out.println("<html><body><b>Please fill all the input"+
+		                 "</b></body></html>");
+		    	 response.sendRedirect("form.html");
+		     }
 		     
-		     PrintWriter out = response.getWriter();
-		     out.println("<html><body><b>Successfully Inserted"
+		     
+		     out.println("<html><body align=\"center\"><b>Successfully Inserted"
 		                 + "</b><br>"+
 		    		 "<a href=\"index.html\"> Go to Home Page</a> <br>"+
 		    		 "<a href=\"form.html\">Go back to Calculate Xpense</a>"+

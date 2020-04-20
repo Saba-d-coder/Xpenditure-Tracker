@@ -17,8 +17,22 @@ body{
 	margin-top:30%
 }
 
-#daily,#yearly,#monthly,#weekly{
-	width:50%;
-	margin:auto
+button {
+    color: white;
+    background-color: #ed1c40;
+    font-size: 17px ;
+    height: 35px !important;
+    width:15% !important;
+    border: none;
+    border-radius: 29px;
+}
+
+table{
+	border: none;
+    border-bottom: 1px solid black;
+    width: 50%;
+    font-size: 18px;
+    line-height: 30px;
+    color: crimson;
 }
 
